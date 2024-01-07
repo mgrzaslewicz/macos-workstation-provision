@@ -1,0 +1,20 @@
+---
+- name: Install zsh
+  hosts: all
+  gather_facts: False
+  tags: zsh
+  tasks:
+    - name: Install zsh
+      homebrew:
+        name: zsh
+    - name: Get current login shell
+      shell: echo $SHELL
+      register: current_shell
+      args:
+          executable: /bin/bash
+      changed_when: false
+    - name: Make zsh default shell
+      when: current_shell.stdout != "/bin/zsh"
+      shell: USER=$(whoami) sudo chsh -s $(which zsh) $USER
+      args:
+        executable: /bin/bash
