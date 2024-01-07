@@ -1,0 +1,23 @@
+---
+- name: Install zoxide, a smarter cd command
+  hosts: all
+  gather_facts: False
+  tags: zoxide
+  tasks:
+    - name: Install zoxide
+      homebrew:
+        name: zoxide
+    - name: Make sure zoxide.zsh is present
+      file:
+        path: "~/.oh-my-zsh/custom/zoxide.zsh"
+        state: touch
+        mode: 0700
+        access_time: preserve
+        modification_time: preserve
+    - name: Add zsh configuration to zoxide.zsh
+      lineinfile:
+        path: "~/.oh-my-zsh/custom/zoxide.zsh"
+        state: present
+        line: '{{ item }}'
+      loop:
+        - eval "$(zoxide init zsh)"
