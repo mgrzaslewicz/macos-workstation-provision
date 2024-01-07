@@ -1,0 +1,9 @@
+---
+- name: Install imagemagick
+  hosts: all
+  gather_facts: False
+  tags: pdf,imagemagick
+  tasks:
+    - name: Install imagemagick
+      homebrew:
+        name: imagemagick

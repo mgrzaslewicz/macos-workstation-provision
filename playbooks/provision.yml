@@ -12,6 +12,7 @@
 - import_playbook: zsh/powerlevel10k.yml
 
 - import_playbook: various/broot.yml
+- import_playbook: various/imagemagick.yml
 - import_playbook: various/zoom.yml
 
 - import_playbook: vim/vim.yml
