@@ -1,0 +1,11 @@
+---
+- name: Upgrade macos
+  hosts: all
+  gather_facts: False
+  tasks:
+    - name: Upgrade macos
+      become: true
+      shell:
+        cmd: softwareupdate -i -a
+      register: result
+      changed_when: "result.rc != 0 and 'No updates are available.' not in softwareupdate_assembled.stderr"

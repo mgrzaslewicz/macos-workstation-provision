@@ -1,0 +1,4 @@
+---
+- import_playbook: upgrade-system.yml
+- import_playbook: install-brew-packages.yml
+- import_playbook: add-self-symlink-to-bin.yml
