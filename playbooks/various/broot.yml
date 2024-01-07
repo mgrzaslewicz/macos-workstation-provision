@@ -1,0 +1,9 @@
+---
+- name: Install broot
+  hosts: all
+  gather_facts: False
+  tags: broot
+  tasks:
+    - name: Install broot
+      homebrew:
+        name: broot
