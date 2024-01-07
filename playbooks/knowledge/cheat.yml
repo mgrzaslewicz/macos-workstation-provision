@@ -1,0 +1,9 @@
+---
+- name: Install cheat
+  hosts: all
+  gather_facts: False
+  tags: knowledge,cheat
+  tasks:
+    - name: Install cheat
+      homebrew:
+        name: cheat

@@ -1,0 +1,9 @@
+---
+- name: Install logseq
+  hosts: all
+  gather_facts: False
+  tags: graphical,knowledge,logseq
+  tasks:
+    - name: Install logseq
+      homebrew_cask:
+        name: logseq
