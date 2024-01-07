@@ -1,0 +1,9 @@
+---
+- name: Install mcfly for searching shell history
+  hosts: all
+  gather_facts: False
+  tags: mcfly
+  tasks:
+    - name: Install mcfly
+      homebrew:
+        name: mcfly

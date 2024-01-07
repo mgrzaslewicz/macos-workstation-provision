@@ -1,0 +1,21 @@
+---
+- name: Setup mcfly in zsh
+  hosts: all
+  gather_facts: False
+  tags: mcfly
+  tasks:
+    - name: Make sure mcfly.zsh is present
+      file:
+        path: "~/.oh-my-zsh/custom/mcfly.zsh"
+        state: touch
+        mode: 0700
+        access_time: preserve
+        modification_time: preserve
+    - name: Add mcfly init
+      lineinfile:
+        path: "~/.oh-my-zsh/custom/mcfly.zsh"
+        state: present
+        line: '{{ item }}'
+      loop:
+        - 'export MCFLY_KEY_SCHEME=vim'
+        - 'eval "$(mcfly init zsh)"'
