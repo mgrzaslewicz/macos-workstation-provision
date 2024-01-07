@@ -1,0 +1,9 @@
+---
+- name: Install zoom
+  hosts: all
+  gather_facts: False
+  tags: graphical,zoom
+  tasks:
+    - name: Install zoom
+      homebrew_cask:
+        name: zoom
