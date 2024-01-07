@@ -1,0 +1,9 @@
+---
+- name: Install viddy
+  hosts: all
+  gather_facts: False
+  tags: viddy
+  tasks:
+    - name: Install viddy
+      homebrew:
+        name: viddy

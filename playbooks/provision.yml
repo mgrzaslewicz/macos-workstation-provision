@@ -13,6 +13,7 @@
 
 - import_playbook: various/broot.yml
 - import_playbook: various/imagemagick.yml
+- import_playbook: various/viddy.yml
 - import_playbook: various/zoom.yml
 - import_playbook: various/zoxide.yml
 
