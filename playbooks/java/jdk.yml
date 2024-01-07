@@ -1,0 +1,26 @@
+---
+- name: Install JDKs
+  hosts: all
+  gather_facts: False
+  tags: java,jvm
+  vars:
+    jdks:
+      - { version: openjdk@11, symlink: /Library/Java/JavaVirtualMachines/openjdk-11.jdk }
+      - { version: openjdk@17, symlink: /Library/Java/JavaVirtualMachines/openjdk-17.jdk }
+      - { version: openjdk@21, symlink: /Library/Java/JavaVirtualMachines/openjdk-21.jdk }
+  tasks:
+    - name: Install JDK 8
+      homebrew_cask:
+        name: 'temurin8' # there is no openjdk 8 for M1 architecture
+    - name: Install multiple JDKs
+      homebrew:
+        name: '{{ item.version }}'
+      loop: '{{ jdks }}'
+    - name: Add symlinks for JDKs
+      become: true
+      file:
+        src: /opt/homebrew/opt/{{ item.version }}/libexec/openjdk.jdk
+        dest: '{{ item.symlink }}'
+        state: link
+        mode: 0755
+      loop: '{{ jdks }}'
