@@ -1,0 +1,26 @@
+---
+- name: Configure git
+  hosts: all
+  gather_facts: False
+  tags: git
+  tasks:
+    - name: Copy global .gitignore file
+      copy:
+        src: .gitignore_global
+        dest: ~/.gitignore_global
+        mode: 0644
+    - name: Configure git to use global .gitignore file
+      git_config:
+        name: core.excludesfile
+        scope: global
+        value: '~/.gitignore_global'
+    - name: Change default comment character to ';' in git
+      git_config:
+        name: core.commentChar
+        scope: global
+        value: ';'
+    - name: Use vim as default editor
+      git_config:
+        name: core.editor
+        scope: global
+        value: 'vim'

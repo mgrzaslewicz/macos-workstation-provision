@@ -1,0 +1,9 @@
+---
+- name: Install lazygit
+  hosts: all
+  gather_facts: False
+  tags: git,lazygit
+  tasks:
+    - name: Install lazygit
+      homebrew:
+        name: jesseduffield/lazygit/lazygit

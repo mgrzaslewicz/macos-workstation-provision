@@ -1,0 +1,9 @@
+---
+- name: Install git
+  hosts: all
+  gather_facts: False
+  tags: git
+  tasks:
+    - name: Install git
+      homebrew:
+        name: git

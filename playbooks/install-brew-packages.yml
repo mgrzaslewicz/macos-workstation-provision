@@ -2,6 +2,7 @@
 - name: Upgrade macos
   hosts: all
   gather_facts: False
+  tags: brew
   tasks:
     - name: Check if homebrew is installed
       shell:
@@ -18,3 +19,6 @@
       register: result
       until: result is successful
       when: homebrew_check.rc == 0
+    - name: Install gnu-tar # needed by ansible unarchive module
+      homebrew:
+        name: gnu-tar
