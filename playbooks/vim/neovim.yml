@@ -1,0 +1,24 @@
+---
+- name: Configure nvim
+  hosts: all
+  gather_facts: False
+  tags: vim,nvim
+  tasks:
+    - name: Install neovim
+      homebrew:
+        name: neovim
+    - name: Make sure nvim config directory exists
+      file:
+        path: "~/.config/nvim"
+        state: directory
+        mode: 0700
+        access_time: preserve
+        modification_time: preserve
+    - name: Use the same config as vim
+      file:
+        path: "~/.config/nvim/init.vim"
+        src: "~/.vimrc"
+        state: link
+        force: yes
+        access_time: preserve
+        modification_time: preserve

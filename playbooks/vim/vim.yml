@@ -1,0 +1,9 @@
+---
+- name: Install vim
+  hosts: all
+  gather_facts: False
+  tags: vim
+  tasks:
+    - name: Install vim
+      homebrew:
+        name: vim

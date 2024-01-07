@@ -1,0 +1,37 @@
+---
+- name: Install vim-plug to manage vim plugins
+  hosts: all
+  gather_facts: False
+  tags: vim
+  tasks:
+    - name: Create vim autoload directory
+      file:
+        path: ~/.vim/autoload
+        state: directory
+        mode: 0700
+    - name: Download vim-plug install script
+      get_url:
+        url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        dest: /tmp/plug.vim
+        mode: 0700
+        force: true
+        timeout: 30
+      register: download
+      until: download is success
+      retries: 3
+      delay: 5
+      changed_when: false
+    - name: Copy vim-plug install script to ~/.vim/autoload/plug.vim
+      copy:
+        src: /tmp/plug.vim
+        dest: ~/.vim/autoload/plug.vim
+        mode: 0700
+    - name: Install vim plugins
+      shell: vim +'PlugInstall --sync' +qall
+      args:
+        executable: /bin/bash
+      register: vim_plug_install
+      changed_when: "'Installing' in vim_plug_install.stdout"
+      failed_when:
+        - "vim_plug_install.rc != 0"
+        - "'Error' in vim_plug_install.stdout"
