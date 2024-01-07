@@ -7,6 +7,9 @@
 - import_playbook: git/git-global-config.yml
 - import_playbook: git/lazygit.yml
 
+- import_playbook: javascript/nvm.yml
+- import_playbook: javascript/nvm-zsh.yml
+
 - import_playbook: knowledge/cheat.yml
 - import_playbook: knowledge/logseq.yml
 
