@@ -25,3 +25,43 @@
     - name: Install gnu-tar # needed by ansible unarchive module
       homebrew:
         name: gnu-tar
+    - name: Install graphical tools
+      tags: graphical
+      homebrew_cask:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - double-commander
+        - flycut # clipboard manager
+        - foobar2000
+        - gimp
+        - libreoffice
+        - iterm2
+        - keepassxc
+        - mucommander
+        - postman
+        - signal
+        - spectacle
+        - spotify
+        - sublime-text
+        - thunderbird
+        - vlc
+    - name: Install console tools
+      tags: console
+      homebrew:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - hexyl
+        - jq
+        - midnight-commander
+        - pipx
+        - nmap
+        - tmux
+        - tmuxinator
+        - unzip
+        - vagrant
+        - wget
+        - qemu
+        - yarn
+        - zbar # to scan QR codes from image or camera
