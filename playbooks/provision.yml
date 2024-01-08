@@ -8,6 +8,7 @@
 - import_playbook: git/lazygit.yml
 
 - import_playbook: java/jdk.yml
+- import_playbook: java/jenv.yml
 
 - import_playbook: javascript/nvm.yml
 - import_playbook: javascript/nvm-zsh.yml
