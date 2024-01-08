@@ -1,0 +1,8 @@
+---
+- name: Install batcat
+  hosts: all
+  tags: batcat
+  tasks:
+    - name: Install batcat
+      homebrew:
+        name: bat
