@@ -1,0 +1,22 @@
+---
+- name: Install docker
+  hosts: all
+  tags: docker
+  tasks:
+    - name: Install docker
+      homebrew:
+        name: docker
+    - name: Add docker group
+      become: true
+      group:
+        name: docker
+        state: present
+    - name: Add current user to docker group
+      become: true
+      user:
+        name: "{{ansible_env.USER}}"
+        groups: docker
+        append: true
+    - name: Install docker-compose
+      homebrew:
+        name: docker-compose
