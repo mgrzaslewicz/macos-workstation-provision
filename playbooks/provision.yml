@@ -30,6 +30,7 @@
 - import_playbook: various/imagemagick.yml
 - import_playbook: various/lsd.yml
 - import_playbook: various/mcfly.yml
+- import_playbook: various/mcfly-zsh.yml
 - import_playbook: various/viddy.yml
 - import_playbook: various/zoom.yml
 - import_playbook: various/zoxide.yml
