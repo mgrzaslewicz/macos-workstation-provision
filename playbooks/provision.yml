@@ -16,6 +16,7 @@
 - import_playbook: java/visual-vm.yml
 
 - import_playbook: docker/docker.yml
+- import_playbook: docker/lazydocker.yml
 
 - import_playbook: javascript/nvm.yml
 - import_playbook: javascript/nvm-zsh.yml

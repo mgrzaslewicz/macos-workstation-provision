@@ -1,0 +1,9 @@
+---
+- name: Install lazydocker
+  hosts: all
+  tags: docker,lazydocker
+  gather_facts: False
+  tasks:
+    - name: Install lazydocker
+      homebrew:
+        name: lazydocker
