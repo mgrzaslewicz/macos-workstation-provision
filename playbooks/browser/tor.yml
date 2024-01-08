@@ -1,0 +1,9 @@
+---
+- name: Install tor
+  hosts: all
+  gather_facts: False
+  tags: graphical,browser,tor
+  tasks:
+    - name: Install tor
+      homebrew:
+        name: tor

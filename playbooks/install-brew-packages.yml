@@ -1,5 +1,5 @@
 ---
-- name: Upgrade macos
+- name: Install and setup brew and brew packages
   hosts: all
   gather_facts: False
   tags: brew

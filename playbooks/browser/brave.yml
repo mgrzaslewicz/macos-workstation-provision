@@ -1,0 +1,9 @@
+---
+- name: Install brave
+  hosts: all
+  gather_facts: False
+  tags: graphical,browser,brave
+  tasks:
+    - name: Install brave
+      homebrew_cask:
+        name: brave-browser

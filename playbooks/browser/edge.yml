@@ -1,0 +1,9 @@
+---
+- name: Install edge browser
+  hosts: all
+  gather_facts: False
+  tags: graphical,browser,edge
+  tasks:
+    - name: Install edge
+      homebrew_cask:
+        name: microsoft-edge

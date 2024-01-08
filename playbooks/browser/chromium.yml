@@ -1,0 +1,9 @@
+---
+- name: Install chromium
+  hosts: all
+  gather_facts: False
+  tags: graphical,browser,chromium
+  tasks:
+    - name: Install chromium
+      homebrew_cask:
+        name: chromium

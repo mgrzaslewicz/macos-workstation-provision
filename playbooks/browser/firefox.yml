@@ -1,0 +1,9 @@
+---
+- name: Install firefox
+  hosts: all
+  gather_facts: False
+  tags: graphical,browser,firefox
+  tasks:
+    - name: Install firefox
+      homebrew_cask:
+        name: firefox
