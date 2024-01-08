@@ -1,0 +1,10 @@
+---
+- name: Install visual-vm
+  hosts: all
+  gather_facts: False
+  tags: java,visual-vm
+  tasks:
+    - name: Install visual-vm
+      tags: graphical,java,visual-vm
+      homebrew_cask:
+        name: visualvm

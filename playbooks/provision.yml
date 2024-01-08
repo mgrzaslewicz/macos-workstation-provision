@@ -13,6 +13,7 @@
 - import_playbook: java/jenv.yml
 - import_playbook: java/jenv-zsh.yml
 - import_playbook: java/mvnvm.yml
+- import_playbook: java/visual-vm.yml
 
 - import_playbook: javascript/nvm.yml
 - import_playbook: javascript/nvm-zsh.yml
