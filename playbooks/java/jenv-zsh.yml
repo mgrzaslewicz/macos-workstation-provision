@@ -1,0 +1,21 @@
+---
+- name: Setup jenv in zsh
+  hosts: all
+  gather_facts: False
+  tags: java,jenv
+  tasks:
+    - name: Make sure java.zsh is present
+      file:
+        path: "~/.oh-my-zsh/custom/java.zsh"
+        state: touch
+        mode: 0700
+        access_time: preserve
+        modification_time: preserve
+    - name: Ensure jenv is added to PATH in zsh
+      lineinfile:
+        path: "~/.oh-my-zsh/custom/java.zsh"
+        state: present
+        line: '{{ item }}'
+      loop:
+        - export PATH="$HOME/.jenv/bin:$PATH"
+        - eval "$(jenv init -)"
