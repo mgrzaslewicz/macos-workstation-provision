@@ -1,0 +1,79 @@
+---
+- name: Install async-profiler
+  hosts: all
+  tags: java,asprof
+  tasks:
+    - name: Download latest release metadata
+      uri:
+        timeout: 30
+        url: https://api.github.com/repos/async-profiler/async-profiler/releases/latest
+        return_content: yes
+      register: latest_version_metadata
+      until: latest_version_metadata is success
+      retries: 3
+      delay: 5
+    - name: Parse latest version tag
+      set_fact:
+        latest_version: "{{ latest_version_metadata.json.tag_name | regex_replace('^v', '') }}"
+    - name: Check already installed version
+      shell:
+        cmd: ls /opt/async-profiler/.v* | sed 's/.*\.v//'
+      register: installed_version
+      changed_when: false
+      ignore_errors: true
+    - name: Check if expected async-profiler {{ latest_version }} is installed
+      stat:
+        path: /opt/async-profiler/.v{{ latest_version }}
+      register: latest_version_installed
+    - name: Download async-profiler {{ latest_version }}
+      get_url:
+        url: https://github.com/async-profiler/async-profiler/releases/latest/download/async-profiler-{{ latest_version }}-macos.zip
+        dest: /tmp/async-profiler-{{ latest_version }}-macos.zip
+        timeout: 30
+      register: download
+      until: download is success
+      retries: 3
+      delay: 5
+      changed_when: false
+      when: not latest_version_installed.stat.exists
+    - name: Delete old async-profiler {{ installed_version.stdout }}
+      when: not latest_version_installed.stat.exists
+      become: true
+      file:
+        path: /opt/async-profiler
+        state: absent
+    - name: Unpack async-profiler {{ latest_version }}
+      become: true
+      when: not latest_version_installed.stat.exists
+      changed_when: false
+      unarchive:
+        src: /tmp/async-profiler-{{ latest_version }}-macos.zip
+        dest: /tmp
+        remote_src: yes
+        creates: /tmp/async-profiler-{{ latest_version }}-macos
+    - name: Move async-profiler to /opt
+      become: true
+      when: not latest_version_installed.stat.exists
+      shell: "mv /tmp/async-profiler-{{ latest_version }}-macos /opt/async-profiler"
+    - name: Set permissions
+      become: true
+      when: not latest_version_installed.stat.exists
+      file:
+        path: /opt/async-profiler
+        mode: 0755
+        recurse: true
+    - name: Create version file {{ latest_version }}
+      become: true
+      when: not latest_version_installed.stat.exists
+      file:
+        path: /opt/async-profiler/.v{{ latest_version }}
+        state: touch
+        mode: 0744
+    - name: Create symlink to bin
+      become: true
+      when: not latest_version_installed.stat.exists
+      file:
+        src: /opt/async-profiler/profiler.sh
+        dest: /usr/local/bin/asprof
+        state: link
+        mode: 0755
