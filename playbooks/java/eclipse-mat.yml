@@ -1,0 +1,19 @@
+- name: Install Eclipse MAT
+  hosts: all
+  gather_facts: False
+  tags: java,eclipse-mat
+  tasks:
+    - name: Install eclipse memory analyzer
+      homebrew_cask:
+        name: memoryanalyzer
+    - name: Set heap space to 4GB
+      lineinfile:
+        path: /Applications/MemoryAnalyzer.app/Contents/Eclipse/MemoryAnalyzer.ini
+        regexp: '^-Xmx.*'
+        line: '-Xmx4g'
+        state: present
+    - name: Set java version to 17
+      copy:
+        content: 17
+        dest: /Applications/MemoryAnalyzer.app/Contents/Eclipse/.java-version
+        mode: 0744
