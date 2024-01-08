@@ -33,6 +33,8 @@
 - import_playbook: various/zoom.yml
 - import_playbook: various/zoxide.yml
 
+- import_playbook: dotfiles/home-dir-as-git-repository.yml
+
 - import_playbook: vim/vim.yml
 - import_playbook: vim/vim-plug.yml
 - import_playbook: vim/neovim.yml

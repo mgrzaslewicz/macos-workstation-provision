@@ -1,0 +1,23 @@
+---
+- name: Install dotfiles
+  # good resource on dotfiles: https://dotfiles.github.io/tutorials/
+  hosts: all
+  gather_facts: False
+  tags: dotfiles
+  tasks:
+    - name: Download dotfiles install script
+      get_url:
+        url: "https://raw.githubusercontent.com/mgrzaslewicz/dotfiles/master/install-mg-dotfiles.sh"
+        dest: /tmp/install-mg-dotfiles.sh
+        mode: 0700
+        force: true
+        timeout: 30
+      register: download
+      until: download is success
+      retries: 3
+      delay: 5
+      changed_when: false
+    - name: Install dotfiles
+      shell: bash /tmp/install-mg-dotfiles.sh
+      args:
+        executable: /bin/sh
