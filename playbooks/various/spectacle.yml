@@ -1,0 +1,9 @@
+---
+- name: Install spectacle
+  hosts: all
+  gather_facts: False
+  tags: spectacle
+  tasks:
+    - name: Install
+      homebrew_cask:
+        name: spectacle

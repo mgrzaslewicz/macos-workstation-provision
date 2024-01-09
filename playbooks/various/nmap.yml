@@ -1,0 +1,9 @@
+---
+- name: Install nmap
+  hosts: all
+  gather_facts: False
+  tags: nmap
+  tasks:
+    - name: Install nmap
+      homebrew:
+        name: nmap

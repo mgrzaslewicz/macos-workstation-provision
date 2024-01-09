@@ -1,0 +1,9 @@
+---
+- name: Install mu-commander
+  hosts: all
+  tags: graphical,file-commander,mu-commander
+  gather_facts: False
+  tasks:
+    - name: Install mu-commander
+      homebrew_cask:
+        name: mucommander

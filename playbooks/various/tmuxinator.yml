@@ -1,0 +1,9 @@
+---
+- name: Install tmuxinator
+  hosts: all
+  gather_facts: False
+  tags: terminal,tmuxinator
+  tasks:
+    - name: Install tmuxinator
+      homebrew:
+        name: tmuxinator

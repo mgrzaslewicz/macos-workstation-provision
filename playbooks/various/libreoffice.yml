@@ -1,0 +1,9 @@
+---
+- name: Install libreoffice
+  hosts: all
+  gather_facts: False
+  tags: libreoffice
+  tasks:
+    - name: Install
+      homebrew_cask:
+        name: libreoffice

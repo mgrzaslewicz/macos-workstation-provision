@@ -1,0 +1,9 @@
+---
+- name: Install postman
+  hosts: all
+  gather_facts: False
+  tags: postman
+  tasks:
+    - name: Install
+      homebrew_cask:
+        name: postman

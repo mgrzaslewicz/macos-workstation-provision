@@ -1,0 +1,9 @@
+---
+- name: Install unzip
+  hosts: all
+  gather_facts: False
+  tags: unzip
+  tasks:
+    - name: Install unzip
+      homebrew:
+        name: unzip

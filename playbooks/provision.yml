@@ -1,7 +1,14 @@
 ---
 - import_playbook: upgrade-system.yml
-- import_playbook: install-brew-packages.yml
+- import_playbook: install-brew.yml
 - import_playbook: add-self-symlink-to-bin.yml
+
+- import_playbook: communicator/signal.yml
+- import_playbook: communicator/zoom.yml
+
+- import_playbook: file-commander/double-commander.yml
+- import_playbook: file-commander/midnight-commnader.yml
+- import_playbook: file-commander/mu-commander.yml
 
 - import_playbook: git/git.yml
 - import_playbook: git/git-global-config.yml
@@ -20,6 +27,13 @@
 
 - import_playbook: javascript/nvm.yml
 - import_playbook: javascript/nvm-zsh.yml
+- import_playbook: javascript/yarn.yml
+
+- import_playbook: media/foobar2000.yml
+- import_playbook: media/spotify.yml
+- import_playbook: media/vlc.yml
+
+- import_playbook: python/pipx.yml
 
 - import_playbook: browser/brave.yml
 - import_playbook: browser/chromium.yml
@@ -36,13 +50,29 @@
 
 - import_playbook: various/batcat.yml
 - import_playbook: various/broot.yml
+- import_playbook: various/flycut.yml
+- import_playbook: various/gimp.yml
 - import_playbook: various/imagemagick.yml
+- import_playbook: various/iterm2.yml
+- import_playbook: various/libreoffice.yml
 - import_playbook: various/lsd.yml
+- import_playbook: various/keepassxc.yml
 - import_playbook: various/mcfly.yml
 - import_playbook: various/mcfly-zsh.yml
+- import_playbook: various/nmap.yml
+- import_playbook: various/postman.yml
+- import_playbook: various/spectacle.yml
+- import_playbook: various/sublime-text.yml
+- import_playbook: various/thunderbird.yml
+- import_playbook: various/tmux.yml
+- import_playbook: various/tmuxinator.yml
+- import_playbook: various/unzip.yml
+- import_playbook: various/wget.yml
 - import_playbook: various/viddy.yml
-- import_playbook: various/zoom.yml
 - import_playbook: various/zoxide.yml
+
+- import_playbook: vm/qemu.yml
+- import_playbook: vm/vagrant.yml
 
 - import_playbook: dotfiles/home-dir-as-git-repository.yml
 

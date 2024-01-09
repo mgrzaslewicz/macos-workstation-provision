@@ -1,0 +1,9 @@
+---
+- name: Install vlc
+  hosts: all
+  gather_facts: False
+  tags: graphical,media,vlc
+  tasks:
+    - name: Install vlc
+      homebrew_cask:
+        name: vlc

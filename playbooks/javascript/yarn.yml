@@ -1,0 +1,9 @@
+---
+- name: Install yarn
+  hosts: all
+  tags: javascript,yarn
+  gather_facts: False
+  tasks:
+    - name: Install yarn
+      homebrew:
+        name: yarn

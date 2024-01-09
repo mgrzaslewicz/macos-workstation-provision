@@ -1,0 +1,9 @@
+---
+- name: Install foobar2000
+  hosts: all
+  gather_facts: False
+  tags: graphical,media,foobar2000
+  tasks:
+    - name: Install foobar2000
+      homebrew_cask:
+        name: foobar2000

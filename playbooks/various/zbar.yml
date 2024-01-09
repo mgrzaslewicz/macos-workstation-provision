@@ -1,0 +1,9 @@
+---
+- name: Install zbar
+  hosts: all
+  gather_facts: False
+  tags: zbar
+  tasks:
+    - name: Install zbar
+      homebrew:
+        name: zbar

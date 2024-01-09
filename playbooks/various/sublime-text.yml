@@ -1,0 +1,9 @@
+---
+- name: Install sublime-text
+  hosts: all
+  gather_facts: False
+  tags: sublime-text
+  tasks:
+    - name: Install
+      homebrew_cask:
+        name: sublime-text

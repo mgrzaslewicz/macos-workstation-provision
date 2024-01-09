@@ -1,0 +1,9 @@
+---
+- name: Install gimp
+  hosts: all
+  gather_facts: False
+  tags: gimp
+  tasks:
+    - name: Install
+      homebrew_cask:
+        name: gimp

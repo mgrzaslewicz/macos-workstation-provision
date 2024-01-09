@@ -1,0 +1,9 @@
+---
+- name: Install iterm2
+  hosts: all
+  tags: graphical,console,iterm2
+  gather_facts: False
+  tasks:
+    - name: Install iterm2
+      homebrew_cask:
+        name: iterm2

@@ -2,7 +2,7 @@
 - name: Install zoom
   hosts: all
   gather_facts: False
-  tags: graphical,zoom
+  tags: graphical,communicator,zoom
   tasks:
     - name: Install zoom
       homebrew_cask:

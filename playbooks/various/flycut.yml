@@ -1,0 +1,9 @@
+---
+- name: Install flycut # clipboard manager
+  hosts: all
+  gather_facts: False
+  tags: flycut
+  tasks:
+    - name: Install zbar
+      homebrew_cask:
+        name: flycut

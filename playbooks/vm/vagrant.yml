@@ -1,0 +1,9 @@
+---
+- name: Install vagrant
+  hosts: all
+  gather_facts: False
+  tags: vm,vagrant
+  tasks:
+    - name: Install vagrant
+      homebrew:
+        name: vagrant

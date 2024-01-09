@@ -1,0 +1,9 @@
+---
+- name: Install thunderbird
+  hosts: all
+  gather_facts: False
+  tags: graphical,thunderbird
+  tasks:
+    - name: Install thunderbird
+      homebrew_cask:
+        name: thunderbird

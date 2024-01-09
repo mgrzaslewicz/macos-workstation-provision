@@ -1,0 +1,27 @@
+---
+- name: Install and setup brew and brew packages
+  hosts: all
+  gather_facts: False
+  tags: brew
+  tasks:
+    - name: Check if homebrew is installed
+      shell:
+        cmd: brew --help
+      register: homebrew_check
+      changed_when: false
+    - name: Install homebrew
+      shell:
+        cmd: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      when: homebrew_check.rc != 0
+    - name: Add cask-versions
+      shell:
+        cmd: brew tap homebrew/cask-versions
+    - name: Upgrade homebrew packages
+      homebrew:
+        upgrade_all: "true"
+      register: result
+      until: result is successful
+      when: homebrew_check.rc == 0
+    - name: Install gnu-tar # needed by ansible unarchive module
+      homebrew:
+        name: gnu-tar

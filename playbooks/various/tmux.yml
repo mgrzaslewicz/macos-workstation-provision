@@ -1,0 +1,9 @@
+---
+- name: Install tmux
+  hosts: all
+  gather_facts: False
+  tags: terminal,tmux
+  tasks:
+    - name: Install tmux
+      homebrew:
+        name: tmux

@@ -1,0 +1,9 @@
+---
+- name: Install signal
+  hosts: all
+  gather_facts: False
+  tags: graphical,communicator,signal
+  tasks:
+    - name: Install signal
+      homebrew_cask:
+        name: signal

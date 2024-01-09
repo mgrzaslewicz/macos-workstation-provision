@@ -1,0 +1,9 @@
+---
+- name: Install jq
+  hosts: all
+  gather_facts: False
+  tags: jq
+  tasks:
+    - name: Install jq
+      homebrew:
+        name: jq

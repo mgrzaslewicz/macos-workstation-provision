@@ -1,0 +1,9 @@
+---
+- name: Install midnight-commander
+  hosts: all
+  tags: console,file-commander,midnight-commander
+  gather_facts: False
+  tasks:
+    - name: Install midnight-commander
+      homebrew:
+        name: midnight-commander

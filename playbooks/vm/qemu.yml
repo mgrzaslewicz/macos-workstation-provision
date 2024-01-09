@@ -1,0 +1,9 @@
+---
+- name: Install qemu
+  hosts: all
+  gather_facts: False
+  tags: vm,qemu
+  tasks:
+    - name: Install qemu
+      homebrew:
+        name: qemu

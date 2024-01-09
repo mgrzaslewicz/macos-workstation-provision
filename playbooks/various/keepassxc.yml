@@ -1,0 +1,9 @@
+---
+- name: Install keepassxc
+  hosts: all
+  gather_facts: False
+  tags: keepassxc
+  tasks:
+    - name: Install
+      homebrew_cask:
+        name: keepassxc

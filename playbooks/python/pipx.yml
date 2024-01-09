@@ -1,0 +1,9 @@
+---
+- name: Install pipx
+  hosts: all
+  gather_facts: False
+  tags: python,pipx
+  tasks:
+    - name: Install pipx
+      homebrew:
+        name: pipx

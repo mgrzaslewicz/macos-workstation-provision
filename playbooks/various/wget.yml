@@ -1,0 +1,9 @@
+---
+- name: Install wget
+  hosts: all
+  gather_facts: False
+  tags: wget
+  tasks:
+    - name: Install wget
+      homebrew:
+        name: wget
