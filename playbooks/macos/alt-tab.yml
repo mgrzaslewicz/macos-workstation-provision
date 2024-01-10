@@ -1,0 +1,9 @@
+---
+- name: Install alt-tab
+  hosts: all
+  tags: alt-tab
+  gather_facts: False
+  tasks:
+    - name: Install alt-tab
+      homebrew_cask:
+        name: alt-tab
