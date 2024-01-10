@@ -20,6 +20,16 @@
         - /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
         - /Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home
         - /Library/Java/JavaVirtualMachines/openjdk-21.jdk/Contents/Home
+    - name: Fix major versions JDKs in jenv
+      file:
+        src: "{{ item.src }}"
+        dest: "{{ item.destination }}"
+        state: link
+      loop:
+        - { destination: ~/.jenv/versions/8, src: /Library/Java/JavaVirtualMachines/temurin-8.jdk/Contents/Home }
+        - { destination: ~/.jenv/versions/11, src: /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home }
+        - { destination: ~/.jenv/versions/17, src: /Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home }
+        - { destination: ~/.jenv/versions/21, src: /Library/Java/JavaVirtualMachines/openjdk-21.jdk/Contents/Home }
     - name: Enable jenv export plugin
       shell: eval "$(jenv init -)" && jenv enable-plugin export
       register: jenv_enable_plugin
