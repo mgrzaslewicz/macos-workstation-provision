@@ -49,3 +49,4 @@
       shell: |
         defaults write com.apple.Mail DisableSendAnimations -bool true
         defaults write com.apple.Mail DisableReplyAnimations -bool true
+      ignore_errors: true
