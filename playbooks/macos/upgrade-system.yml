@@ -2,6 +2,7 @@
 - name: Upgrade macos
   hosts: all
   gather_facts: False
+  tags: macos
   tasks:
     - name: Upgrade macos
       become: true

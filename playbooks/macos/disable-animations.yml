@@ -1,0 +1,51 @@
+---
+- name: Disable animations
+  hosts: all
+  gather_facts: False
+  tags: macos,animations
+  tasks:
+    - name: Disable opening and closing windows and popovers
+      shell:
+        cmd: defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+    - name: Disable smooth scrolling
+      shell:
+        cmd: defaults write NSGlobalDomain NSScrollAnimationEnabled -bool false
+    - name: Disable showing and hiding sheets, resizing preference windows, zooming windows
+      shell:
+        cmd: defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+    - name: Disable opening and closing Quick Look windows
+      shell:
+        cmd: defaults write -g QLPanelAnimationDuration -float 0
+    - name: Disable ubberband scrolling (doesn't affect web views)
+      shell:
+        cmd: defaults write -g NSScrollViewRubberbanding -bool false
+    - name: Disable resizing windows before and after showing the version browser
+      shell:
+        cmd: defaults write -g NSDocumentRevisionsWindowTransformAnimation -bool false
+    - name: Disable showing a toolbar or menu bar in full screen
+      shell:
+        cmd: defaults write -g NSToolbarFullScreenAnimationDuration -float 0
+    - name: Disable scrolling column views
+      shell:
+        cmd: defaults write -g NSBrowserColumnAnimationSpeedMultiplier -float 0
+    - name: Disable showing the Dock
+      shell: |
+        defaults write com.apple.dock autohide-time-modifier -float 0
+        defaults write com.apple.dock autohide-delay -float 0
+    - name: Disable showing and hiding Mission Control, command+numbers
+      shell:
+        cmd: defaults write com.apple.dock expose-animation-duration -float 0
+    - name: Disable showing and hiding Launchpad
+      shell: |
+        defaults write com.apple.dock springboard-show-duration -float 0
+        defaults write com.apple.dock springboard-hide-duration -float 0
+    - name: Disable changing pages in Launchpad
+      shell:
+        cmd: defaults write com.apple.dock springboard-page-duration -float 0
+    - name: Disable at least AnimateInfoPanes
+      shell:
+        cmd: defaults write com.apple.finder DisableAllAnimations -bool true
+    - name: Disable sending messages and opening windows for replies
+      shell: |
+        defaults write com.apple.Mail DisableSendAnimations -bool true
+        defaults write com.apple.Mail DisableReplyAnimations -bool true

@@ -2,7 +2,7 @@
 - name: Install and setup brew and brew packages
   hosts: all
   gather_facts: False
-  tags: brew
+  tags: macos,brew
   tasks:
     - name: Check if homebrew is installed
       shell:
