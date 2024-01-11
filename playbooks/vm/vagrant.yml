@@ -7,3 +7,4 @@
     - name: Install vagrant
       homebrew:
         name: vagrant
+      ignore_errors: True # ignore errors when vagrant is already installed
