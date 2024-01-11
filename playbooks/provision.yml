@@ -28,6 +28,8 @@
 - import_playbook: java/mvnvm.yml
 - import_playbook: java/visual-vm.yml
 
+- import_playbook: ide/intellij.yml
+
 - import_playbook: docker/docker.yml
 - import_playbook: docker/lazydocker.yml
 
