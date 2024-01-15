@@ -38,3 +38,11 @@
         PATH: "{{ ansible_env.PATH }}:~/.jenv/bin"
       args:
         executable: /bin/bash
+    - name: Enable jenv maven plugin
+      shell: eval "$(jenv init -)" && jenv enable-plugin maven
+      register: jenv_enable_plugin
+      changed_when: "'already enabled' not in jenv_enable_plugin.stdout"
+      environment:
+        PATH: "{{ ansible_env.PATH }}:~/.jenv/bin"
+      args:
+        executable: /bin/bash
