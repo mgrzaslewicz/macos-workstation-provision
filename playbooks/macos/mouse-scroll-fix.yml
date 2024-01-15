@@ -1,0 +1,8 @@
+---
+- name: Install mac-mouse-fix
+  hosts: all
+  tags: mac-mouse-fix
+  tasks:
+    - name: Install mac-mouse-fix
+      homebrew_cask:
+        name: mac-mouse-fix

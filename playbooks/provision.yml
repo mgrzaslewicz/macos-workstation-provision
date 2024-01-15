@@ -3,6 +3,7 @@
 - import_playbook: macos/install-brew.yml
 - import_playbook: macos/alt-tab.yml
 - import_playbook: macos/disable-animations.yml
+- import_playbook: macos/mouse-scroll-fix.yml
 - import_playbook: add-self-symlink-to-bin.yml
 
 - import_playbook: zsh/zsh.yml
