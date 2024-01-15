@@ -46,3 +46,8 @@
         PATH: "{{ ansible_env.PATH }}:~/.jenv/bin"
       args:
         executable: /bin/bash
+    - name: Set default java version
+      shell: eval "$(jenv init -)" && jenv global 11
+      changed_when: false
+      args:
+        executable: /bin/bash
