@@ -14,7 +14,7 @@
 - import_playbook: communicator/zoom.yml
 
 - import_playbook: file-commander/double-commander.yml
-- import_playbook: file-commander/midnight-commnader.yml
+- import_playbook: file-commander/midnight-commander.yml
 - import_playbook: file-commander/mu-commander.yml
 
 - import_playbook: git/git.yml
