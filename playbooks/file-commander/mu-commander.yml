@@ -4,6 +4,79 @@
   tags: graphical,file-commander,mu-commander
   gather_facts: False
   tasks:
-    - name: Install mu-commander
-      homebrew_cask:
-        name: mucommander
+    - name: Download latest release metadata
+      uri:
+        timeout: 30
+        url: https://api.github.com/repos/mucommander/mucommander/releases/latest
+        return_content: yes
+      register: latest_version_metadata
+      until: latest_version_metadata is success
+      retries: 3
+      delay: 5
+    - name: Parse latest version tag
+      set_fact:
+        latest_version: "{{ latest_version_metadata.json.tag_name | regex_replace('^v', '') }}"
+    - name: Check if mucommander is installed
+      stat:
+        path: /opt/mucommander
+      register: mucommander_installed
+    - name: Check if expected mucommander version is installed
+      stat:
+        path: /opt/mucommander/.v{{ latest_version }}
+      register: expected_mucommander_installed
+    - name: Download mucommander
+      when: not expected_mucommander_installed.stat.exists
+      get_url:
+        url: "https://github.com/mucommander/mucommander/releases/download/{{ latest_version }}/mucommander-{{ latest_version }}-portable.zip"
+        dest: /tmp/mucommander.zip
+        mode: 0700
+        timeout: 60
+      register: download
+      until: download is success
+      retries: 3
+      delay: 5
+      changed_when: false
+    - name: Create temp directory
+      when: not expected_mucommander_installed.stat.exists
+      tempfile:
+        state: directory
+      register: temp_dir
+      changed_when: false
+    - name: Unpack mucommander
+      when: not expected_mucommander_installed.stat.exists
+      changed_when: false
+      unarchive:
+        src: /tmp/mucommander.zip
+        dest: '{{ temp_dir.path }}'
+        remote_src: yes
+    - name: Delete old mucommander installation
+      become: true
+      file:
+        path: /opt/mucommander
+        state: absent
+      when: mucommander_installed.stat.exists and not expected_mucommander_installed.stat.exists
+    - name: Move unpacked mucommander
+      become: true
+      when: not expected_mucommander_installed.stat.exists
+      shell: 'mv {{ temp_dir.path }} /opt/mucommander'
+    - name: Set permissions
+      become: true
+      when: not expected_mucommander_installed.stat.exists
+      file:
+        path: /opt/mucommander
+        mode: 0755
+        recurse: true
+    - name: Create version file
+      when: not expected_mucommander_installed.stat.exists
+      file:
+        path: /opt/mucommander/.v{{ latest_version }}
+        state: touch
+        mode: 0744
+    - name: Create symlink to bin
+      become: true
+      when: not expected_mucommander_installed.stat.exists
+      file:
+        src: /opt/mucommander/mucommander.sh
+        dest: /usr/local/bin/mucommander
+        state: link
+        mode: 0755
