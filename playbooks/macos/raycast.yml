@@ -1,0 +1,8 @@
+---
+- name: Install raycast
+  hosts: all
+  tags: raycast
+  tasks:
+    - name: Install raycast
+      homebrew_cask:
+        name: raycast
