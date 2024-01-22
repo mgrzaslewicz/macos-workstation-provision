@@ -1,9 +1,0 @@
----
-- name: Install double-commander
-  hosts: all
-  tags: graphical,file-commander,double-commander
-  gather_facts: False
-  tasks:
-    - name: Install double-commander
-      homebrew_cask:
-        name: double-commander
