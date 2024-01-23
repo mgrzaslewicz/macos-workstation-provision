@@ -1,0 +1,8 @@
+---
+- name: Install dropbox
+  hosts: all
+  tags: dropbox
+  tasks:
+    - name: Install dropbox
+      homebrew_cask:
+        name: dropbox

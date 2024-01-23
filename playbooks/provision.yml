@@ -55,6 +55,7 @@
 
 - import_playbook: various/batcat.yml
 - import_playbook: various/broot.yml
+- import_playbook: various/dropbox.yml
 - import_playbook: various/flycut.yml
 - import_playbook: various/gimp.yml
 - import_playbook: various/imagemagick.yml
