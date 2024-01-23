@@ -71,9 +71,8 @@
         mode: 0744
     - name: Create symlink to bin
       become: true
-      when: not latest_version_installed.stat.exists
       file:
-        src: /opt/async-profiler/profiler.sh
+        src: /opt/async-profiler/bin/asprof
         dest: /usr/local/bin/asprof
         state: link
         mode: 0755
