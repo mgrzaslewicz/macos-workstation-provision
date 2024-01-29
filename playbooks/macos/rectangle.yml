@@ -1,0 +1,8 @@
+---
+- name: Install rectangle
+  hosts: all
+  tags: rectangle
+  tasks:
+    - name: Install rectangle
+      homebrew_cask:
+        name: rectangle
