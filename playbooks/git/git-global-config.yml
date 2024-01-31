@@ -19,6 +19,11 @@
         name: core.commentChar
         scope: global
         value: ';'
+    - name: Change pager to be non-interactive
+      git_config:
+        name: pager.branch
+        scope: global
+        value: 'false'
     - name: Use vim as default editor
       git_config:
         name: core.editor
