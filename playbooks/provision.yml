@@ -83,6 +83,7 @@
 - import_playbook: various/unzip.yml
 - import_playbook: various/wget.yml
 - import_playbook: various/viddy.yml
+- import_playbook: various/vnc.yml
 - import_playbook: various/zoxide.yml
 
 - import_playbook: vm/qemu.yml

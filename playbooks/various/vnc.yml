@@ -1,0 +1,9 @@
+---
+- name: Install tiger-vnc
+  hosts: all
+  gather_facts: False
+  tags: vnc
+  tasks:
+    - name: Install tiger-vnc
+      homebrew:
+        name: tiger-vnc
