@@ -1,0 +1,9 @@
+---
+- name: Install pyenv
+  hosts: all
+  gather_facts: False
+  tags: python,pyenv
+  tasks:
+    - name: Install pyenv
+      homebrew:
+        name: pyenv

@@ -1,0 +1,22 @@
+---
+- name: Setup pyenv in zsh
+  hosts: all
+  gather_facts: False
+  tags: python,pyenv,zsh
+  tasks:
+    - name: Make sure java.zsh is present
+      file:
+        path: "~/.oh-my-zsh/custom/pyenv.zsh"
+        state: touch
+        mode: 0700
+        access_time: preserve
+        modification_time: preserve
+    - name: Ensure jenv is added to PATH in zsh
+      lineinfile:
+        path: "~/.oh-my-zsh/custom/pyenv.zsh"
+        state: present
+        line: '{{ item }}'
+      loop:
+        - 'export PYENV_ROOT="$HOME/.pyenv"'
+        - '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"'
+        - 'eval "$(pyenv init -)"'

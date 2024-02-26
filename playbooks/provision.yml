@@ -44,6 +44,8 @@
 - import_playbook: media/vlc.yml
 
 - import_playbook: python/pipx.yml
+- import_playbook: python/pyenv.yml
+- import_playbook: python/pyenv-zsh.yml
 
 - import_playbook: browser/brave.yml
 - import_playbook: browser/chromium.yml
