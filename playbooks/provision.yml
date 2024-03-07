@@ -3,6 +3,7 @@
 - import_playbook: macos/install-brew.yml
 - import_playbook: macos/alt-tab.yml
 - import_playbook: macos/disable-animations.yml
+- import_playbook: macos/keepingyouawake.yml
 - import_playbook: macos/mouse-scroll-fix.yml
 - import_playbook: macos/raycast.yml
 - import_playbook: macos/rectangle.yml

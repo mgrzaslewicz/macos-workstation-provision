@@ -1,0 +1,8 @@
+---
+- name: Install keepingyouawake
+  hosts: all
+  tags: keepingyouawake
+  tasks:
+    - name: Install keepingyouawake
+      homebrew_cask:
+        name: keepingyouawake
