@@ -23,6 +23,9 @@
 - import_playbook: git/git-global-config.yml
 - import_playbook: git/lazygit.yml
 
+- import_playbook: go/go.yml
+- import_playbook: go/go-zsh.yml
+
 - import_playbook: java/async-profiler.yml
 - import_playbook: java/eclipse-mat.yml
 - import_playbook: java/jdk.yml

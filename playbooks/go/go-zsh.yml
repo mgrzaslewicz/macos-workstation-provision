@@ -1,0 +1,19 @@
+---
+- name: Add go to $PATH
+  hosts: all
+  tags: go,zsh
+  tasks:
+    - name: Make sure go.zsh is present
+      file:
+        path: "~/.oh-my-zsh/custom/go.zsh"
+        state: touch
+        mode: 0700
+        access_time: preserve
+        modification_time: preserve
+    - name: Add go.zsh content
+      lineinfile:
+        path: "~/.oh-my-zsh/custom/go.zsh"
+        state: present
+        line: '{{ item }}'
+      loop:
+        - 'export PATH=$(go env GOPATH)/bin:$PATH'

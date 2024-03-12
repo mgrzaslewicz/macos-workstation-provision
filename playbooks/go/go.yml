@@ -1,0 +1,8 @@
+---
+- name: Install go
+  hosts: all
+  tags: go
+  tasks:
+    - name: Install go
+      homebrew:
+        name: go
