@@ -1,0 +1,10 @@
+---
+- name: Install jmeter
+  hosts: all
+  gather_facts: False
+  tags: java,jmeter
+  tasks:
+    - name: Install jmeter
+      homebrew:
+        name: jmeter
+
