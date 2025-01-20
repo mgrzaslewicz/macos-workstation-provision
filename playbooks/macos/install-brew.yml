@@ -13,9 +13,6 @@
       shell:
         cmd: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
       when: homebrew_check.rc != 0
-    - name: Add cask-versions
-      shell:
-        cmd: brew tap homebrew/cask-versions
     - name: Upgrade homebrew packages
       homebrew:
         upgrade_all: "true"
