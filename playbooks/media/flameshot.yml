@@ -1,0 +1,9 @@
+---
+- name: Install flameshot
+  hosts: all
+  gather_facts: False
+  tags: graphical,media,screenshot
+  tasks:
+    - name: Install flameshot
+      homebrew_cask:
+        name: flameshot
