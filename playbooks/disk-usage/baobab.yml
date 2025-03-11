@@ -1,0 +1,9 @@
+---
+- name: Install baobab
+  hosts: all
+  gather_facts: False
+  tags: disk-usage
+  tasks:
+    - name: Install baobab
+      homebrew:
+        name: baobab

@@ -37,6 +37,9 @@
 
 - import_playbook: ide/intellij.yml
 
+- import_playbook: disk-usage/baobab.yml
+- import_playbook: disk-usage/grand-perspective.yml
+
 - import_playbook: docker/docker.yml
 - import_playbook: docker/lazydocker.yml
 

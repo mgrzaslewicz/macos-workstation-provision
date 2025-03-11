@@ -1,0 +1,9 @@
+---
+- name: Install grand perspective
+  hosts: all
+  gather_facts: False
+  tags: disk-usage
+  tasks:
+    - name: Install grand perspective
+      homebrew:
+        name: grandperspective
