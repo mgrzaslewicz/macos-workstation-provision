@@ -13,6 +13,18 @@ if [[ -n $TAGS ]]; then
   TAGS_OPTION="--tags ${TAGS}"
 fi
 
+if ! command -v brew &> /dev/null
+then
+  echo "Brew is not installed, installing it now..."
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+if ! command -v ansible &> /dev/null
+then
+  echo "Ansible is not installed, installing it now..."
+  brew install ansible
+fi
+
 ansible-playbook -K \
 --connection=local \
 --inventory 127.0.0.1, \
