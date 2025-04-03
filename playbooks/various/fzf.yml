@@ -1,0 +1,12 @@
+---
+- name: Install fzf, a command line fuzzy finder
+  hosts: all
+  gather_facts: False
+  tags: fzf
+  tasks:
+    - name: About fzf
+      debug:
+        msg: "https://github.com/junegunn/fzf integrates nicely with zoxide, improves file navigation productivity"
+    - name: Install fzf
+      homebrew:
+        name: fzf
