@@ -94,7 +94,7 @@
 - import_playbook: vm/qemu.yml
 - import_playbook: vm/vagrant.yml
 
-- import_playbook: dotfiles/home-dir-as-git-repository.yml
+- import_playbook: dotfiles/chezmoi.yml
 
 - import_playbook: vim/vim.yml
 - import_playbook: vim/vim-plug.yml

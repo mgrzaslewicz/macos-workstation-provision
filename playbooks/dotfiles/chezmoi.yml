@@ -1,0 +1,17 @@
+---
+- name: Install chezmoi for managing dotfiles
+  hosts: all
+  gather_facts: False
+  tags: dotfiles,chezmoi
+  tasks:
+    - name: Install chezmoi
+      homebrew:
+        name: chezmoi
+    - name: Install dotfiles repository
+      shell: 'chezmoi init https://github.com/mgrzaslewicz/dotfiles.git'
+      register: chezmoi_status
+      failed_when: >
+        chezmoi_status.rc != 0 and
+        ("already exists" not in chezmoi_status.stderr | lower)
+    - name: Apply dotfiles
+      shell: 'chezmoi update'
