@@ -21,6 +21,7 @@
 
 - import_playbook: git/git.yml
 - import_playbook: git/git-global-config.yml
+- import_playbook: git/kdiff3.yml
 - import_playbook: git/lazygit.yml
 
 - import_playbook: go/go.yml

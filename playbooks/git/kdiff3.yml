@@ -1,0 +1,9 @@
+---
+- name: Install kdiff3
+  hosts: all
+  gather_facts: False
+  tags: git,kdiff3
+  tasks:
+    - name: Install kdiff3
+      homebrew:
+        name: kdiff3
