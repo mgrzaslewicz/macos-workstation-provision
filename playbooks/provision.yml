@@ -11,7 +11,6 @@
 
 - import_playbook: zsh/zsh.yml
 - import_playbook: zsh/oh-my-zsh.yml
-- import_playbook: zsh/powerlevel10k.yml
 
 - import_playbook: communicator/signal.yml
 - import_playbook: communicator/zoom.yml
