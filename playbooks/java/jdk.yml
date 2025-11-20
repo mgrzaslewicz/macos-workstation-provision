@@ -1,21 +1,26 @@
 ---
-- name: Install JDK 25 using mise
+- name: Install JDKs using mise
   hosts: all
   gather_facts: False
   tags: java,jvm
   tasks:
-    - name: Install JDK 25 with mise
-      shell: mise install java@25
+    - name: Install JDK versions with mise
+      shell: mise install java@{{ item }}
       environment:
         PATH: "/opt/homebrew/bin:/usr/local/bin:{{ ansible_env.PATH }}"
       args:
         executable: /bin/bash
       register: mise_install
       changed_when: "'installed' in mise_install.stdout or 'installing' in mise_install.stdout"
-    - name: Set JDK 25 as global default
+      loop:
+        - 17
+        - 21
+        - 25
+    - name: Set latest JDK (25) as global default
       shell: mise use --global java@25
       environment:
         PATH: "/opt/homebrew/bin:/usr/local/bin:{{ ansible_env.PATH }}"
       args:
         executable: /bin/bash
       changed_when: false
+
