@@ -6,4 +6,4 @@
   tasks:
     - name: Install lazygit
       homebrew:
-        name: jesseduffield/lazygit/lazygit
+        name: lazygit
