@@ -1,0 +1,9 @@
+---
+- name: Install mise
+  hosts: all
+  gather_facts: False
+  tags: mise
+  tasks:
+    - name: Install mise
+      homebrew:
+        name: mise

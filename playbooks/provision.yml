@@ -12,6 +12,9 @@
 - import_playbook: zsh/zsh.yml
 - import_playbook: zsh/oh-my-zsh.yml
 
+- import_playbook: various/mise.yml
+- import_playbook: various/mise-zsh.yml
+
 - import_playbook: communicator/signal.yml
 - import_playbook: communicator/zoom.yml
 
@@ -29,10 +32,8 @@
 - import_playbook: java/async-profiler.yml
 - import_playbook: java/eclipse-mat.yml
 - import_playbook: java/jdk.yml
-- import_playbook: java/jenv.yml
-- import_playbook: java/jenv-zsh.yml
 - import_playbook: java/jmeter.yml
-- import_playbook: java/mvnvm.yml
+- import_playbook: java/maven.yml
 - import_playbook: java/visual-vm.yml
 
 - import_playbook: ide/intellij.yml
@@ -43,8 +44,6 @@
 - import_playbook: docker/docker.yml
 - import_playbook: docker/lazydocker.yml
 
-- import_playbook: javascript/nvm.yml
-- import_playbook: javascript/nvm-zsh.yml
 - import_playbook: javascript/yarn.yml
 
 - import_playbook: media/flameshot.yml

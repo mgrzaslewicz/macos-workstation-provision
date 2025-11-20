@@ -1,0 +1,23 @@
+---
+- name: Install maven
+  hosts: all
+  gather_facts: False
+  tags: java,maven
+  tasks:
+    - name: Install mise maven plugin
+      shell: mise plugins install maven
+      environment:
+        PATH: "/opt/homebrew/bin:/usr/local/bin:{{ ansible_env.PATH }}"
+      args:
+        executable: /bin/bash
+      register: mise_install
+      changed_when: "'already installed' not in mise_install.stderr"
+    - name: Install maven 3 as a global default
+      shell: mise use -g maven@3
+      environment:
+        PATH: "/opt/homebrew/bin:/usr/local/bin:{{ ansible_env.PATH }}"
+      args:
+        executable: /bin/bash
+      register: mise_install
+      changed_when: "'bin/mvn' in mise_install.stdout" # unzipping log, e.g. 'x apache-maven-3.9.0/bin/mvn'
+

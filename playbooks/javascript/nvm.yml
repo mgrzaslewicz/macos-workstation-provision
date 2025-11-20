@@ -1,9 +1,0 @@
----
-- name: Install nvm
-  hosts: all
-  gather_facts: False
-  tags: javascript,nvm
-  tasks:
-    - name: Install nvm
-      homebrew:
-        name: nvm

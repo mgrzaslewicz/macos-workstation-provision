@@ -1,26 +1,21 @@
 ---
-- name: Install JDKs
+- name: Install JDK 25 using mise
   hosts: all
   gather_facts: False
   tags: java,jvm
-  vars:
-    jdks:
-      - { version: openjdk@11, symlink: /Library/Java/JavaVirtualMachines/openjdk-11.jdk }
-      - { version: openjdk@17, symlink: /Library/Java/JavaVirtualMachines/openjdk-17.jdk }
-      - { version: openjdk@21, symlink: /Library/Java/JavaVirtualMachines/openjdk-21.jdk }
   tasks:
-    - name: Install JDK 8
-      homebrew_cask:
-        name: 'temurin8' # there is no openjdk 8 for M1 architecture
-    - name: Install multiple JDKs
-      homebrew:
-        name: '{{ item.version }}'
-      loop: '{{ jdks }}'
-    - name: Add symlinks for JDKs
-      become: true
-      file:
-        src: /opt/homebrew/opt/{{ item.version }}/libexec/openjdk.jdk
-        dest: '{{ item.symlink }}'
-        state: link
-        mode: 0755
-      loop: '{{ jdks }}'
+    - name: Install JDK 25 with mise
+      shell: mise install java@25
+      environment:
+        PATH: "/opt/homebrew/bin:/usr/local/bin:{{ ansible_env.PATH }}"
+      args:
+        executable: /bin/bash
+      register: mise_install
+      changed_when: "'installed' in mise_install.stdout or 'installing' in mise_install.stdout"
+    - name: Set JDK 25 as global default
+      shell: mise use --global java@25
+      environment:
+        PATH: "/opt/homebrew/bin:/usr/local/bin:{{ ansible_env.PATH }}"
+      args:
+        executable: /bin/bash
+      changed_when: false
