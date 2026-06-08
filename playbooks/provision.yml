@@ -55,8 +55,6 @@
 - import_playbook: python/pyenv-zsh.yml
 
 - import_playbook: browser/brave.yml
-- import_playbook: browser/chromium.yml
-- import_playbook: browser/edge.yml
 - import_playbook: browser/firefox.yml
 - import_playbook: browser/tor.yml
 
