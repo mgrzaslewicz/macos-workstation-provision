@@ -1,0 +1,8 @@
+---
+- name: Install karabiner
+  hosts: all
+  tags: karabiner
+  tasks:
+    - name: Install karabiner
+      homebrew_cask:
+        name: karabiner-elements
