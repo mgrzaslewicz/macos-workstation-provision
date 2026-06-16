@@ -1,0 +1,8 @@
+---
+- name: Install elgato-camera-hub
+  hosts: all
+  tags: camera,elgato
+  tasks:
+    - name: Install elgato-camera-hub
+      homebrew_cask:
+        name: elgato-camera-hub
