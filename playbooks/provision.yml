@@ -76,7 +76,6 @@
 - import_playbook: various/mcfly-zsh.yml
 - import_playbook: various/nmap.yml
 - import_playbook: various/postman.yml
-- import_playbook: various/spectacle.yml
 - import_playbook: various/sublime-text.yml
 - import_playbook: various/thunderbird.yml
 - import_playbook: various/tmux.yml
