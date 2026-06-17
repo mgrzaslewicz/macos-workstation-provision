@@ -7,3 +7,6 @@
     - name: Install mu-commander
       homebrew_cask:
         name: mucommander
+    - name: Install duti so mu commander has 'Open with' list
+      homebrew:
+        name: duti
