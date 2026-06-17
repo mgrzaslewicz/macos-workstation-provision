@@ -2,7 +2,7 @@
 - name: Disable animations
   hosts: all
   gather_facts: False
-  tags: macos,animations
+  tags: macos,ui-settings
   tasks:
     - name: Disable opening and closing windows and popovers
       shell:
@@ -50,3 +50,5 @@
         defaults write com.apple.Mail DisableSendAnimations -bool true
         defaults write com.apple.Mail DisableReplyAnimations -bool true
       ignore_errors: true
+    - name: Auto hide the dock
+      shell: defaults write com.apple.dock autohide -bool true; killall Dock
