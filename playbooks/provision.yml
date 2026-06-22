@@ -20,6 +20,7 @@
 
 - import_playbook: file-commander/midnight-commander.yml
 - import_playbook: file-commander/mu-commander.yml
+- import_playbook: file-commander/yazi.yml
 
 - import_playbook: git/git.yml
 - import_playbook: git/kdiff3.yml

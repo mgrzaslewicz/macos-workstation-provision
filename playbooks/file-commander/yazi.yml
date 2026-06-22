@@ -1,0 +1,9 @@
+---
+- name: Install yazi
+  hosts: all
+  tags: console,file-commander,yazi
+  gather_facts: False
+  tasks:
+    - name: Install yazi
+      homebrew:
+        name: yazi
