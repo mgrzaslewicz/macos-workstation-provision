@@ -1,0 +1,10 @@
+---
+- name: Install rtk (Rust Token Killer)
+  hosts: all
+  gather_facts: False
+  tags: agentic-workflow,rtk
+  tasks:
+    - name: Install rtk
+      tags: agentic-workflow,rtk
+      homebrew:
+        name: rtk

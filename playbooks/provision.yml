@@ -38,6 +38,9 @@
 
 - import_playbook: ide/intellij.yml
 
+- import_playbook: agentic-workflow/claude-code.yml
+- import_playbook: agentic-workflow/rtk.yml
+
 - import_playbook: disk-usage/baobab.yml
 - import_playbook: disk-usage/grand-perspective.yml
 

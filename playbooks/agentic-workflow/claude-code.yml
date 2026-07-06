@@ -1,0 +1,10 @@
+---
+- name: Install Claude Code
+  hosts: all
+  gather_facts: False
+  tags: agentic-workflow,claude-code
+  tasks:
+    - name: Install claude-code
+      tags: agentic-workflow,claude-code
+      homebrew_cask:
+        name: claude-code
