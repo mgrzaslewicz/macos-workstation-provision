@@ -1,0 +1,9 @@
+---
+- name: Install bettercmdtab
+  hosts: all
+  tags: bettercmdtab
+  gather_facts: False
+  tasks:
+    - name: Install bettercmdtab
+      homebrew_cask:
+        name: bettercmdtab
