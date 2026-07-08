@@ -1,0 +1,14 @@
+---
+- name: Install CodeGraph
+  hosts: all
+  gather_facts: False
+  tags: agentic-workflow,codegraph
+  tasks:
+    - name: Install codegraph
+      command: mise use -g aqua:colbymchenry/codegraph
+      register: mise_install
+      changed_when: "'bin/codegraph' in mise_install.stdout"
+    - name: Setup codegraph for agents
+      command: "mise exec -- codegraph install --yes --target all --location global"
+      register: mise_exec
+      changed_when: "'Updated ' in mise_exec.stdout"
