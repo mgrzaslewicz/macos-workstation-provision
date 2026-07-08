@@ -8,3 +8,5 @@
       tags: agentic-workflow,rtk
       homebrew:
         name: rtk
+    - name: Init rtk
+      command: rtk init -g --auto-patch
