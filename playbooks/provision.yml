@@ -50,8 +50,8 @@
 
 - import_playbook: javascript/yarn.yml
 
-- import_playbook: media/flameshot.yml
 - import_playbook: media/foobar2000.yml
+- import_playbook: media/macshot.yml
 - import_playbook: media/spotify.yml
 - import_playbook: media/vlc.yml
 

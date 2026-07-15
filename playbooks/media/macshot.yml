@@ -1,0 +1,9 @@
+---
+- name: Install macshot
+  hosts: all
+  gather_facts: False
+  tags: graphical,media,screenshot,macshot
+  tasks:
+    - name: Install macshot
+      homebrew_cask:
+        name: macshot
