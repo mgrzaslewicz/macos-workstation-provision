@@ -1,0 +1,8 @@
+- name: Install ripgrep, a better 'grep'
+  hosts: all
+  gather_facts: False
+  tags: ripgrep
+  tasks:
+    - name: Install ripgrep
+      homebrew:
+        name: ripgrep
