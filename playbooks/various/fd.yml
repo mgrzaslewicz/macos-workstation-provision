@@ -1,0 +1,8 @@
+- name: Install fd, a better 'find'
+  hosts: all
+  gather_facts: False
+  tags: fd
+  tasks:
+    - name: Install fd
+      homebrew:
+        name: fd
