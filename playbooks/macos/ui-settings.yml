@@ -52,3 +52,9 @@
       ignore_errors: true
     - name: Auto hide the dock
       shell: defaults write com.apple.dock autohide -bool true; killall Dock
+    - name: Disable mission control ctrl + left/right shortcuts to make them available for terminal apps
+      shell: |
+        defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 79 "<dict><key>enabled</key><false/></dict>"
+        defaults write com.apple.symbolichotkeys.plist AppleSymbolicHotKeys -dict-add 81 "<dict><key>enabled</key><false/></dict>"
+        /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
