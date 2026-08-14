@@ -98,6 +98,5 @@
 
 - import_playbook: dotfiles/chezmoi.yml
 
-- import_playbook: vim/vim.yml
 - import_playbook: vim/vim-plug.yml
 - import_playbook: vim/neovim.yml

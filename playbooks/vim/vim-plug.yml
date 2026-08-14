@@ -27,7 +27,7 @@
         dest: ~/.vim/autoload/plug.vim
         mode: 0700
     - name: Install vim plugins
-      shell: vim +'PlugInstall --sync' +qall
+      shell: nvim +'PlugInstall --sync' +qall
       args:
         executable: /bin/bash
       register: vim_plug_install
