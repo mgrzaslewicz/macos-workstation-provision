@@ -1,0 +1,8 @@
+- name: Install git-delta, a syntax-highlighting pager for git/diff/grep
+  hosts: all
+  gather_facts: False
+  tags: delta
+  tasks:
+    - name: Install git-delta
+      homebrew:
+        name: git-delta
