@@ -5,4 +5,4 @@
   tasks:
     - name: Install mac-mouse-fix
       homebrew_cask:
-        name: mac-mouse-fix
+        name: linearmouse
