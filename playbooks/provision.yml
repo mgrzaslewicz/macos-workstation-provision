@@ -60,6 +60,8 @@
 - import_playbook: python/pyenv.yml
 - import_playbook: python/pyenv-zsh.yml
 
+- import_playbook: rust/rust.yml
+
 - import_playbook: browser/brave.yml
 - import_playbook: browser/firefox.yml
 - import_playbook: browser/tor.yml

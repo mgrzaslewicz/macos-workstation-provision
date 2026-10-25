@@ -1,0 +1,10 @@
+---
+- name: Install rust
+  hosts: all
+  gather_facts: False
+  tags: rust
+  tasks:
+    - name: Install rust and cargo-binstall
+      command: mise use -g rust cargo-binstall
+      register: mise_install
+      changed_when: "'installed' in (mise_install.stdout + mise_install.stderr)"
