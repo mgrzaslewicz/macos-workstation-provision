@@ -12,4 +12,7 @@
         repo: 'https://github.com/tmux-plugins/tpm'
         dest: "~/.tmux/plugins/tpm"
         version: master
-
+    - name: Install workmux
+      command: mise exec -- cargo binstall --no-confirm workmux
+      register: workmux_install
+      changed_when: "'already installed' not in (workmux_install.stdout + workmux_install.stderr)"

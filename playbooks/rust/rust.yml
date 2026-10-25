@@ -5,6 +5,10 @@
   tags: rust
   tasks:
     - name: Install rust and cargo-binstall
-      command: mise use -g rust cargo-binstall
+      command: mise use -g rust
       register: mise_install
-      changed_when: "'installed' in (mise_install.stdout + mise_install.stderr)"
+      changed_when: "'already installed' not in (mise_install.stdout + mise_install.stderr)"
+    - name: Install cargo-binstall
+      command: mise exec -- cargo install cargo-binstall
+      register: mise_install
+      changed_when: "'already installed' not in (mise_install.stdout + mise_install.stderr)"
